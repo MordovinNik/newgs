@@ -1,2 +1,5 @@
 /venv/
 /.idea/
+/static/
+/media/
+/newgs/prod_settings.py
