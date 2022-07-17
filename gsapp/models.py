@@ -5,7 +5,7 @@ class Reports(models.Model):
     creation_date = models.DateField(auto_now_add=True)
     deadline = models.DateField()
     closing_date = models.DateField(null=True)
-    status = models.BooleanField()
+    status = models.BooleanField(default=False)
     description = models.TextField()
     report_type = models.ForeignKey('ReportTypes', on_delete=models.PROTECT, null=False)
     submitter = models.ForeignKey('Users', on_delete=models.PROTECT, null=False, related_name='submitter')
