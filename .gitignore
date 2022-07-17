@@ -2,5 +2,6 @@
 /.idea/
 /static/
 /media/
+/logs/
 /newgs/prod_settings.py
 /newgs/local_settings.py
