@@ -15,13 +15,41 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
+from rest_framework import routers
+from gsapp.views import *
 
-from gsapp.views import schema_view
+reports_router = routers.SimpleRouter()
+reports_router.register(r'reports', ReportsAPIViewSet)
+
+depts_router = routers.SimpleRouter()
+depts_router.register(r'depts', DeptsAPIViewSet)
+
+subDepts_router = routers.SimpleRouter()
+subDepts_router.register(r'subdepts', SubDeptsAPIViewSet)
+
+usersRouter = routers.SimpleRouter()
+usersRouter.register(r'users', UsersAPIViewSet)
+
+reportTypes_router = routers.SimpleRouter()
+reportTypes_router.register(r'report-types', ReportTypesAPIViewSet)
+
+files_router = routers.SimpleRouter()
+files_router.register(r'files', FilesAPIViewSet)
+
+concern_permissions_router = routers.SimpleRouter()
+concern_permissions_router.register(r'permissions', ConcernPermissionsAPIViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', TemplateView.as_view(template_name='index.html')),
     url(r'swagger/', schema_view),
+    path('api/v1/', include(reports_router.urls)),
+    path('api/v1/', include(depts_router.urls)),
+    path('api/v1/', include(subDepts_router.urls)),
+    path('api/v1/', include(usersRouter.urls)),
+    path('api/v1/', include(reportTypes_router.urls)),
+    path('api/v1/', include(files_router.urls)),
+    path('api/v1/', include(concern_permissions_router.urls)),
 ]
