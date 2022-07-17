@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'gsapp',
     'rest_framework_swagger',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -36,6 +37,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
 ]
 
 ROOT_URLCONF = 'newgs.urls'

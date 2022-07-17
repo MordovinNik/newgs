@@ -39,7 +39,7 @@ files_router = routers.SimpleRouter()
 files_router.register(r'files', FilesAPIViewSet)
 
 concern_permissions_router = routers.SimpleRouter()
-concern_permissions_router.register(r'permissions', ConcernPermissionsAPIViewSet)
+concern_permissions_router.register(r'concern-permissions', ConcernPermissionsAPIViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
