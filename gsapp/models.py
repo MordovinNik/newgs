@@ -36,7 +36,7 @@ class Users(models.Model):
     last_name = models.CharField(max_length=40)
     email = models.CharField(max_length=100)
     concern_permission_class = models.DecimalField(max_digits=1, decimal_places=0)
-    concern_additional_permissions = models.ManyToManyField('ConcernPermissions', verbose_name='Дополнительные права', null=True)
+    concern_additional_permissions = models.ManyToManyField('ConcernPermissions', verbose_name='Дополнительные права', blank=True)
     login = models.CharField(max_length=100)
     password = models.CharField(max_length=150)
     dept = models.ForeignKey('Depts', on_delete=models.PROTECT, null=False)
