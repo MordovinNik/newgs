@@ -3,3 +3,4 @@
 /static/
 /media/
 /newgs/prod_settings.py
+/newgs/local_settings.py
