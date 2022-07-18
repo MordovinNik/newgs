@@ -11,17 +11,12 @@ schema_view = get_swagger_view(title='Pastebin API')
 
 class ReportsAPIViewSet(viewsets.ModelViewSet):
     queryset = Reports.objects.all()
-    serializer_class = ReportsSerializer
 
-    def list(self, request, *args, **kwargs):
-        reports = Reports.objects.all()
-        serializer = ReportsDetailSerializer(reports, many=True)
-        return Response(serializer.data)
-
-    def retrieve(self, request, *args, **kwargs):
-        reports = Reports.objects.all()
-        serializer = ReportsDetailSerializer(reports)
-        return Response(serializer.data)
+    def get_serializer_class(self):
+        if self.action == 'list' or self.action == 'retrieve':
+            return ReportsDetailSerializer
+        else:
+            return ReportsSerializer
 
 
 class SubDeptsAPIViewSet(viewsets.ModelViewSet):
