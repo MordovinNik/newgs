@@ -20,7 +20,7 @@ class ReportsAPIViewSet(viewsets.ModelViewSet):
 
     def retrieve(self, request, *args, **kwargs):
         reports = Reports.objects.all()
-        serializer = ReportsDetailSerializer(reports, many=True)
+        serializer = ReportsDetailSerializer(reports)
         return Response(serializer.data)
 
 
