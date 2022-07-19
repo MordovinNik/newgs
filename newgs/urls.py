@@ -19,6 +19,12 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from rest_framework import routers
 from gsapp.views import *
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+    TokenVerifyView,
+)
+
 
 reports_router = routers.SimpleRouter()
 reports_router.register(r'reports', ReportsAPIViewSet)
@@ -52,4 +58,8 @@ urlpatterns = [
     path('api/v1/', include(reportTypes_router.urls)),
     path('api/v1/', include(files_router.urls)),
     path('api/v1/', include(concern_permissions_router.urls)),
+    path('api/v1/test-dept/', DeptsTestView.as_view()),
+    path('api/token/', TokenObtainPairView.as_view()),
+    path('api/token/refresh/', TokenRefreshView.as_view()),
+    path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 ]
